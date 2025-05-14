@@ -62,5 +62,11 @@ namespace LB6_VA
             string[] strArr = LB7_2.ResMethod();
             Array.ForEach(new[] { textBox10, textBox11, textBox12, textBox13, textBox14 }, TB => TB.Text = strArr[rez++]); 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Labs_VA_2_8.Form1().Show();
+        }
     }
 }

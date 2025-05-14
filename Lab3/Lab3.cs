@@ -168,5 +168,11 @@ namespace LB3_VA
             dataGridView1.Rows[2].Cells[1].Value = Math.Round(Method_Secant(left,right), digits);
             dataGridView1.Rows[3].Cells[1].Value = Iteration(left, right);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Labs_VA_2_8.Form1().Show();
+        }
     }
 }

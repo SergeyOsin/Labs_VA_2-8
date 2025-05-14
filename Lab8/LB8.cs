@@ -57,5 +57,11 @@ namespace LB8_VA
         private void button1_Click(object sender, EventArgs e) => Solve(dataGridView1,1);
 
         private void button2_Click(object sender, EventArgs e) => Solve(dataGridView2,2);
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Labs_VA_2_8.Form1().Show();
+        }
     }
 }

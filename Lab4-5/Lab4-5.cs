@@ -280,5 +280,11 @@ namespace LB4_VA
                 result = 0;
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Labs_VA_2_8.Form1().Show();
+        }
     }
 }
