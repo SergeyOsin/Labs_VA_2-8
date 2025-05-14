@@ -52,8 +52,70 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab1\Lab1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab1\Lab1.Designer.cs">
+      <DependentUpon>Lab1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab2\Lab2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab2\Lab2.Designer.cs">
+      <DependentUpon>Lab2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab3\Lab3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab3\Lab3.Designer.cs">
+      <DependentUpon>Lab3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab4-5\Lab4-5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab4-5\Lab4-5.Designer.cs">
+      <DependentUpon>Lab4-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab7\LB7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab7\LB7.Designer.cs">
+      <DependentUpon>LB7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab7\LB7_FirstEX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab7\LB7_SecondEx.cs" />
+    <Compile Include="Lab8\LB8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab8\LB8.Designer.cs">
+      <DependentUpon>LB8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab8\Solution.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab1\Lab1.resx">
+      <DependentUpon>Lab1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab2\Lab2.resx">
+      <DependentUpon>Lab2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab3\Lab3.resx">
+      <DependentUpon>Lab3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab4-5\Lab4-5.resx">
+      <DependentUpon>Lab4-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab7\LB7.resx">
+      <DependentUpon>LB7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab8\LB8.resx">
+      <DependentUpon>LB8.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Lab6\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
