@@ -51,10 +51,6 @@ namespace Labs_VA_2_8
             this.Hide();
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -67,6 +63,12 @@ namespace Labs_VA_2_8
         {
             LB8_VA.LB8 LB8 = new LB8_VA.LB8();
             LB8.Show();
+            this.Hide();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            new VA6.MainForm().Show();
             this.Hide();
         }
     }
