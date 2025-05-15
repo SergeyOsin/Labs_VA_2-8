@@ -18,9 +18,6 @@ namespace VA6
             InitializeDataGridViews();
             tabPage1.Text = "Интерполяция";
             tabPage2.Text = "Кубический Сплайн";
-            dgvCubicSpline.ColumnHeadersVisible = false;
-            dgvCubicSpline.RowHeadersVisible = false;
-            dgvCubicSpline.Dock = DockStyle.Fill;
             Array.ForEach(new[] { dgvCubicSpline, dgvLagrange }, tb => {
                 tb.ColumnHeadersVisible = false;
                 tb.RowHeadersVisible = false;
@@ -46,29 +43,21 @@ namespace VA6
             return Math.Pow(Math.E, -(x + Math.Sin(x)));
         }
 
-        private List<double> SplitInterval(int n)
-        {
-            List<double> result = new List<double>();
-            Random rnd = new Random();
-            for (int i = 0; i < n; i++)
-            {
-                result.Add(rnd.NextDouble());
-            }
-            result.Insert(0, LEFT);
-            result.Add(RIGHT);
-            result.Sort();
-            return result;
-        }
-
         private (List<double>, List<double>) GetLagrangeValues(int n)
         {
-            List<double> var_values = SplitInterval(n);
-            List<double> result = new List<double>();
-            for (int i = 2; i < var_values.Count; i++)
+            List<double> xValues = new List<double>();
+            List<double> yValues = new List<double>();
+
+            double step = (RIGHT - LEFT) / n; // (5-2)/n
+
+            for (int i = 0; i <= n; i++)
             {
-                result.Add(LagrangeFunction(var_values[i]));
+                double x = LEFT + i * step;
+                xValues.Add(x);
+                yValues.Add(LagrangeFunction(x));
             }
-            return (var_values, result);
+
+            return (xValues, yValues);
         }
 
         private double InterpolateAtPoint(double x, List<double> points, List<double> values)

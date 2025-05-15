@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label9 = new System.Windows.Forms.Label();
@@ -206,10 +206,10 @@
             // 
             // chartLagrange
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartLagrange.ChartAreas.Add(chartArea3);
-            legend2.Name = "Legend1";
-            this.chartLagrange.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.chartLagrange.ChartAreas.Add(chartArea5);
+            legend3.Name = "Legend1";
+            this.chartLagrange.Legends.Add(legend3);
             this.chartLagrange.Location = new System.Drawing.Point(21, 210);
             this.chartLagrange.Name = "chartLagrange";
             this.chartLagrange.Size = new System.Drawing.Size(717, 279);
@@ -302,8 +302,8 @@
             // 
             // chartCubicSpline
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartCubicSpline.ChartAreas.Add(chartArea4);
+            chartArea6.Name = "ChartArea1";
+            this.chartCubicSpline.ChartAreas.Add(chartArea6);
             this.chartCubicSpline.Location = new System.Drawing.Point(82, 225);
             this.chartCubicSpline.Name = "chartCubicSpline";
             this.chartCubicSpline.Size = new System.Drawing.Size(924, 268);
