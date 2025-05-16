@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace LB8_VA
 {
@@ -32,7 +33,6 @@ namespace LB8_VA
             dataGridView1.Rows[2].Cells[0].Value = "y(i)";
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             chart1.Titles.Add("График функции");
-
         }
         private double RoundNum(double num) => Math.Round(num, 4);
         private void Solve(DataGridView gr,int num)
@@ -47,8 +47,38 @@ namespace LB8_VA
                 gr[k + 1, 1].Value = RoundNum(arrayX[k]);
                 gr[k + 1, 2].Value = RoundNum(arrayY[k]);
             }
+            
+        }
+
+        private void BuildGraph()
+        {
+            chart1.ChartAreas[0].AxisX.Title = "X"; // Подпись оси X
+            chart1.ChartAreas[0].AxisY.Title = "Y"; // Подпись оси Y
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+            // Создание и настройка серии
+            Series series = new Series("График функции");
+            series.ChartType = SeriesChartType.Line; // Тип графика - линейный
+            series.Color = Color.Blue; // Цвет линии
+            series.BorderWidth = 2; // Толщина линии
+        
             for (int i = 0; i < 11; i++)
-                chart1.Series[0].Points.AddXY(gr[i, 1].Value, gr[i, 2].Value);
+            {
+                if (dataGridView1.Rows.Count > i &&
+                    dataGridView1[i, 1].Value != null &&
+                    dataGridView1[i, 2].Value != null)
+                {
+                    double x, y;
+                    if (double.TryParse(dataGridView1[i, 1].Value.ToString(), out x) &&
+                        double.TryParse(dataGridView1[i, 2].Value.ToString(), out y))
+                    {
+                        series.Points.AddXY(x, y);
+                    }
+                }
+            }
+            // Очистка предыдущих серий и добавление новой
+            chart1.Series.Clear();
+            chart1.Series.Add(series);
         }
         private void button1_Click(object sender, EventArgs e) => Solve(dataGridView1,1);
 
@@ -57,5 +87,7 @@ namespace LB8_VA
             this.Hide();
             new Labs_VA_2_8.Form1().Show();
         }
+
+        private void button2_Click(object sender, EventArgs e) => BuildGraph();
     }
 }
