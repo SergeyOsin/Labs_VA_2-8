@@ -52,42 +52,27 @@ namespace LB8_VA
 
         private void BuildGraph()
         {
-            chart1.ChartAreas[0].AxisX.Title = "X"; // Подпись оси X
-            chart1.ChartAreas[0].AxisY.Title = "Y"; // Подпись оси Y
+            chart1.ChartAreas[0].AxisX.Title = "X"; 
+            chart1.ChartAreas[0].AxisY.Title = "Y"; 
             chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
             chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
-            // Создание и настройка серии
-            Series series = new Series("График функции");
-            series.ChartType = SeriesChartType.Line; // Тип графика - линейный
-            series.Color = Color.Blue; // Цвет линии
-            series.BorderWidth = 2; // Толщина линии
-        
-            for (int i = 0; i < 11; i++)
-            {
-                if (dataGridView1.Rows.Count > i &&
-                    dataGridView1[i, 1].Value != null &&
-                    dataGridView1[i, 2].Value != null)
-                {
-                    double x, y;
-                    if (double.TryParse(dataGridView1[i, 1].Value.ToString(), out x) &&
-                        double.TryParse(dataGridView1[i, 2].Value.ToString(), out y))
-                    {
-                        series.Points.AddXY(x, y);
-                    }
-                }
-            }
-            // Очистка предыдущих серий и добавление новой
+            Series series = new Series("График значений y(x)");
+            series.ChartType = SeriesChartType.Line; 
+            series.Color = Color.Blue; 
+            series.BorderWidth = 2;
+            series.Points.AddXY(2, -1);
+            for (int i = 1; i < 11; i++)
+                series.Points.AddXY(dataGridView1[i, 1].Value, dataGridView1[i, 2].Value);
             chart1.Series.Clear();
             chart1.Series.Add(series);
         }
         private void button1_Click(object sender, EventArgs e) => Solve(dataGridView1,1);
+        private void button2_Click(object sender, EventArgs e) => BuildGraph();
 
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
             new Labs_VA_2_8.Form1().Show();
         }
-
-        private void button2_Click(object sender, EventArgs e) => BuildGraph();
     }
 }

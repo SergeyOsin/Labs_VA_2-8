@@ -89,9 +89,7 @@
     <Compile Include="Lab7\LB7.Designer.cs">
       <DependentUpon>LB7.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab7\LB7_FirstEX.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Lab7\LB7_FirstEX.cs" />
     <Compile Include="Lab7\LB7_SecondEx.cs" />
     <Compile Include="Lab8\LB8.cs">
       <SubType>Form</SubType>
