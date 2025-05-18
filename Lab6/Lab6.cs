@@ -50,16 +50,37 @@ namespace VA6
             List<double> xValues = new List<double>();
             List<double> yValues = new List<double>();
 
-            double step = (Right - Left) / n;
-
+            // Генерируем n+1 равномерно распределенных точек на интервале [LEFT, RIGHT]
             for (int i = 0; i <= n; i++)
             {
-                double x = LEFT + i * step;
+                double x = LEFT + i * (RIGHT - LEFT) / n;
                 xValues.Add(x);
                 yValues.Add(LagrangeFunction(x));
             }
 
             return (xValues, yValues);
+        }
+
+        private (List<double>, List<double>) InterpolateLagrange(int partitions, List<double> points, List<double> values)
+        {
+            List<double> x_values = new List<double>();
+            List<double> y_values = new List<double>();
+
+            // Для каждого подынтервала между точками делаем partitions разбиений
+            for (int i = 0; i < points.Count - 1; i++)
+            {
+                double a = points[i], b = points[i + 1];
+                double step = (b - a) / partitions;
+
+                for (int j = 0; j <= partitions; j++)
+                {
+                    double xj = a + j * step;
+                    x_values.Add(xj);
+                    y_values.Add(InterpolateAtPoint(xj, points, values));
+                }
+            }
+
+            return (x_values, y_values);
         }
 
         private double InterpolateAtPoint(double x, List<double> points, List<double> values)
@@ -79,26 +100,6 @@ namespace VA6
             }
             return result;
         }
-
-        private (List<double>, List<double>) InterpolateLagrange(int partitions, List<double> points, List<double> values)
-        {
-            List<double> x_values = new List<double> { points[0] };
-            List<double> y_values = new List<double> { values[0] };
-
-            for (int i = 1; i < points.Count; i++)
-            {
-                double a = points[i - 1], b = points[i];
-                double step = (b - a) / partitions;
-                for (int j = 1; j <= partitions; j++)
-                {
-                    double xj = a + j * step;
-                    x_values.Add(xj);
-                    y_values.Add(InterpolateAtPoint(xj, points, values));
-                }
-            }
-            return (x_values, y_values);
-        }
-
         private (double, double, double) CalculateDeviation(double x, List<double> points, List<double> values)
         {
             double function_value = LagrangeFunction(x);
@@ -318,10 +319,7 @@ namespace VA6
 
                 double x = Convert.ToDouble(textBox1.Text);
                 if (x < 2 || x > 5)
-                {
                     throw new Exception("Введите число от 2 до 5!");
-                }
-
                 var deviation = CalculateDeviation(x, points, values);
                 tbFunctionValue.Text = deviation.Item1.ToString("F6");
                 tbPolinomValue.Text = deviation.Item2.ToString("F6");
@@ -352,28 +350,20 @@ namespace VA6
         {
             chartLagrange.Series.Clear();
             chartLagrange.ChartAreas.Clear();
-
-            // Очистка таблицы
             while (dgvLagrange.Columns.Count > 1)
-            {
                 dgvLagrange.Columns.RemoveAt(1);
-            }
 
             var functionValues = GetLagrangeValues((int)nudPartitions.Value);
             List<double> points = functionValues.Item1;
             List<double> values = functionValues.Item2;
-
-            // Заполнение таблицы
             for (int i = 0; i < points.Count; i++)
             {
                 dgvLagrange.Columns.Add($"x{i}", "");
-                dgvLagrange.Rows[0].Cells[i + 1].Value = points[i].ToString("F4");
-                dgvLagrange.Rows[1].Cells[i + 1].Value = values[i].ToString("F4");
+                dgvLagrange.Rows[0].Cells[i + 1].Value = points[i].ToString("F3");
+                dgvLagrange.Rows[1].Cells[i + 1].Value = values[i].ToString("F3");
             }
 
             var interpolatePoints = InterpolateLagrange((int)nudPartitions.Value, points, values);
-
-            // Настройка графика
             ChartArea area = new ChartArea();
             area.AxisX.LabelStyle.Format = "N4";
             area.AxisY.LabelStyle.Format = "N4";
