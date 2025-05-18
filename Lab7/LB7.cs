@@ -31,6 +31,7 @@ namespace LB6_VA
             }
             comboBox1.SelectedItem = 0.01;
             comboBox2.SelectedItem = 0.001;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
         }
         private void button1_Click(object sender, EventArgs e) => Application.Exit();
 

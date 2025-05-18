@@ -67,5 +67,7 @@ namespace Labs_VA_2_8
             this.Hide();
         }
         private void button8_Click(object sender, EventArgs e) => Application.Exit();
+
+        private void Form1_Load_1(object sender, EventArgs e) => FormBorderStyle = FormBorderStyle.SizableToolWindow;
     }
 }

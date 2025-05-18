@@ -21,7 +21,9 @@ namespace VA6
             Array.ForEach(new[] { dgvCubicSpline, dgvLagrange }, tb => {
                 tb.ColumnHeadersVisible = false;
                 tb.RowHeadersVisible = false;
+                
             });
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void InitializeDataGridViews()
@@ -48,7 +50,7 @@ namespace VA6
             List<double> xValues = new List<double>();
             List<double> yValues = new List<double>();
 
-            double step = (RIGHT - LEFT) / n; // (5-2)/n
+            double step = (Right - Left) / n;
 
             for (int i = 0; i <= n; i++)
             {
