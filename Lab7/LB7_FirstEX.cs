@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace LB6_VA
 {
-    internal class LB7_FirstEX : Form
+    internal class LB7_FirstEX
     {
         private double EXP;
         private double point;

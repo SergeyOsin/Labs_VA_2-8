@@ -145,6 +145,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Labs_VA";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
